@@ -46,20 +46,20 @@ public class Number {
 			ch = s.charAt(s.length()-i);
 			if(ch!='0')
 			{
-				if((ch=='1' && i==2) || i==1)
+				if( ch=='1' && ((i!=3 && i%2!=0) || i==2) )
 				{
-				    int n = Integer.parseInt(s.substring(s.length()-(i--)));
-				    number_in_words += numbers.get(n);
+				    int n = Integer.parseInt(s.substring(s.length()-(i),(s.length()-(--i))+1));
+				    number_in_words += numbers.get(n)+" ";
 				}else {
 					
-			        if((i%2!=0 && i!=3) || i==2)
+			        if( (i%2!=0 && i!=3) || i==2)
 			        {
 			    		number_in_words += numbers.get(Character.getNumericValue(ch)*10) + " ";
 				    	i--;
 			        }	
-			    	number_in_words += numbers.get(Character.getNumericValue(s.charAt(s.length()-i))) + " " +
-				                       tens.get(i) + " ";
-				} 	 
+			    	number_in_words += numbers.get(Character.getNumericValue(s.charAt(s.length()-i))) + " ";
+				} 
+				number_in_words += tens.get(i)+" ";
 			}
 			i--;
 		}
