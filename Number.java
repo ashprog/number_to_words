@@ -45,13 +45,17 @@ public class Number {
 		{
 			ch = s.charAt(s.length()-i);
 			if(ch!='0')
-			{
+			{ 
+				//Checks if ch has '1' and i is at odd place(excluding 3rd) or at 2nd place
+				//For adding 'TEEN' numbers, Eg: Thirteen
 				if( ch=='1' && ((i!=3 && i%2!=0) || i==2) )
 				{
 				    int n = Integer.parseInt(s.substring(s.length()-(i),(s.length()-(--i))+1));
 				    number_in_words += numbers.get(n)+" ";
-				}else {
-					
+				}else 
+				{
+				//Checks if 'i' is at odd place(excluding 3rd) or at 2nd place
+				//For adding 'RTY' numbers, Eg: Forty
 			        if( (i%2!=0 && i!=3) || i==2)
 			        {
 			    		number_in_words += numbers.get(Character.getNumericValue(ch)*10) + " ";
@@ -59,6 +63,7 @@ public class Number {
 			        }	
 			    	number_in_words += numbers.get(Character.getNumericValue(s.charAt(s.length()-i))) + " ";
 				} 
+				//For adding tens, Eg: Thousand
 				number_in_words += tens.get(i)+" ";
 			}
 			i--;
