@@ -46,16 +46,16 @@ public class Number {
 			ch = s.charAt(s.length()-i);
 			if(ch!='0')
 			{ 
-				//Checks if ch has '1' and i is at odd place(excluding 3rd) or at 2nd place
-				if( ch=='1' && ((i!=3 && i%2!=0) || i==2) )
+				//Checks if ch has '1' and i is at odd place(greater than 3rd) or at 2nd place
+				if( ch=='1' && ((i>3 && i%2!=0) || i==2) )
 				{
 				    //For adding 'TEEN' numbers, Eg: Thirteen
 				    n = Integer.parseInt(s.substring(s.length()-(i) , (s.length()-(--i))+1));
 				    number_in_words += numbers.get(n)+" ";
 				}else 
 				{
-				//Checks if 'i' is at odd place(excluding 3rd) or at 2nd place
-			        if( (i%2!=0 && i!=3) || i==2)
+				//Checks if 'i' is at odd place(greater than 3rd) or at 2nd place
+			        if( (i%2!=0 && i>3) || i==2)
 			        {
 					//For adding 'RTY' numbers, Eg: Forty
 			    		number_in_words += numbers.get(Character.getNumericValue(ch)*10) + " ";
