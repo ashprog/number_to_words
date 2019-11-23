@@ -38,8 +38,8 @@ public class Number {
 	{
 		String s = Integer.toString(num);
 		String number_in_words="";
-		int i=s.length();
-		char ch;
+		int i=s.length(),n;
+		char ch; 
 		
 		while(i>0)
 		{
@@ -47,20 +47,21 @@ public class Number {
 			if(ch!='0')
 			{ 
 				//Checks if ch has '1' and i is at odd place(excluding 3rd) or at 2nd place
-				//For adding 'TEEN' numbers, Eg: Thirteen
 				if( ch=='1' && ((i!=3 && i%2!=0) || i==2) )
 				{
-				    int n = Integer.parseInt(s.substring(s.length()-(i),(s.length()-(--i))+1));
+				    //For adding 'TEEN' numbers, Eg: Thirteen
+				    n = Integer.parseInt(s.substring(s.length()-(i) , (s.length()-(--i))+1));
 				    number_in_words += numbers.get(n)+" ";
 				}else 
 				{
 				//Checks if 'i' is at odd place(excluding 3rd) or at 2nd place
-				//For adding 'RTY' numbers, Eg: Forty
 			        if( (i%2!=0 && i!=3) || i==2)
 			        {
+					//For adding 'RTY' numbers, Eg: Forty
 			    		number_in_words += numbers.get(Character.getNumericValue(ch)*10) + " ";
 				    	i--;
 			        }	
+			        //For adding single numbers Eg: Four
 			    	number_in_words += numbers.get(Character.getNumericValue(s.charAt(s.length()-i))) + " ";
 				} 
 				//For adding tens, Eg: Thousand
